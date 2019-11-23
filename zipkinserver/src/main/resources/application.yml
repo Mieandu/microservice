@@ -1,0 +1,18 @@
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://eurekaserver:8761/eureka/
+  instance:
+    hostname: zipkinserver
+    #prefer-ip-address: true
+
+

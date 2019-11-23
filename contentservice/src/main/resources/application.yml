@@ -1,0 +1,25 @@
+spring:
+  zipkin:
+    baseUrl: http://zipkinserver:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+    hystrix:
+      stream:
+        enabled: true
+
+
+feign:
+  hystrix:
+    enabled: true
+
+

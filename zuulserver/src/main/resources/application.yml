@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: zuulserver
+server:
+  port: 5555
+
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://eurekaserver:8761/eureka/
+  instance:
+    hostname: zuulserver
+    # prefer-ip-address: true
+    health-check-url-path: /actuator/health
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+security:
+  oauth2:
+    resource:
+      service-id: autheserver
+      user-info-uri: http://autheserver:8901/auth/user  # 验证令牌
+zuul:
+  routes:
+    userservice: /userservice/**

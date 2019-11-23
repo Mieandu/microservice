@@ -1,0 +1,32 @@
+server:
+  port: 9090
+
+logging:
+  level:
+    org.springframework: info
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://eurekaserver:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    health-check-url-path: /actuator/health
+
+spring:
+  application:
+    name: contentservice
+  profiles:
+    active: dev
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+      name: contentservice
+      profile: dev
+      label: master

@@ -1,0 +1,26 @@
+server:
+  port: 8888
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://eurekaserver:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    health-check-url-path: /actuator/health
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/mieandu/microservice/
+          search-paths: config-repo
+      discovery:
+        enabled: true
+      label: nokafka
+

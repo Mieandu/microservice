@@ -1,0 +1,30 @@
+info:
+  version: 1.0.0 #为了在监控中心显示版本信息
+
+server:
+  port: 8844 #珠穆朗玛峰高度
+
+eureka:
+  instance:
+    # prefer-ip-address: true
+    leaseRenewalIntervalInSeconds: 5
+    health-check-url-path: /actuator/health
+  client:
+    registryFetchIntervalSeconds: 5
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eurekaserver:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+spring:
+  application:
+    name: adminserver

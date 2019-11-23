@@ -1,0 +1,6 @@
+example:
+  property: Develop Config
+spring:
+  datasource:
+    username: "user"
+    password: "password"
