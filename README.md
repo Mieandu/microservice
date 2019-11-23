@@ -1,36 +1,44 @@
 # microservice
 
-#### Description
-{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}
+#### 项目描述
+该项目只是提供Spring Cloud.GreenWich的简单集成，防止大家在学习使用GreenWich版本时踩不必要的坑。
 
-#### Software Architecture
-Software architecture description
+目前提供了Spring Cloud.GreenWich的部分组件，为了方便运行，默认提供了和Docker的集成，因此一些路径的配置使用了Docker自带的DNS机制（如：注册中心的地址），
+>不想使用的Docker的话，可以将host改成自己的ip地址，直接运行
+#### 包含组件
+目前有配置中心（Config）、注册中心（Eureka）、网关（Zuul、Gateway）、认证（Auth）、应用监控（Admin）、链路监控(Zipkin)等组件。
 
-#### Installation
+#### 运行
+##### 一.使用Docker容器运行
+1. 使用Docker的同学需要先在机器上安装好Docker
+2. 项目和Docker的集成使用的插件是Spotify，绑定的是Maven的package阶段，因此使用Maven的打包会自动构建docker镜像
+3. 在docker目录下提供了两个compose文件:
+    - docker-compose-base.yml 基础服务组件（配置中心、注册中心等）
+    - docker-compose.yml 业务测试服务
 
-1. xxxx
-2. xxxx
-3. xxxx
+可以使用如下命令运行：
 
-#### Instructions
+    docker stack deploy -c docker-compose-base.yml base_service
 
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### Contribution
-
-1. Fork the repository
-2. Create Feat_xxx branch
-3. Commit your code
-4. Create Pull Request
+> 如果使用的是最版本的IntelliJ IDEA,只配置好和Docker的关联，可以直接运行这两个文件
 
 
-#### Gitee Feature
+##### 二.使用main方式运行
+1. 修改application.yml中注册中心的地址，业务类的服务同时需要更改配置中心的地址
+2. 直接运行注册中心
+3. 直接运行配置中心
+4. 其它服务按需运行
 
-1. You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2. Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3. Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4. The most valuable open source project [GVP](https://gitee.com/gvp)
-5. The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6. The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+####目录介绍
+
+- adminserver 应用监控
+- autheserver 认证服务
+- common 通用工具类
+- config-repo 配置文件
+- contentservice 内容服务（业务）
+- docker docker的compose文件
+- eurekaserver 注册中心
+- gatewayserver Gateway网关
+- userservice 用户服务（业务）
+- zipkinserver 链路监控中心
+- zuulserver Zuul网关
