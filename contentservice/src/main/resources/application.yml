@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: contentservice
+  profiles:
+    active: dev
+
+---
+spring:
+  zipkin:
+    baseUrl: http://zipkinserver:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://eurekaserver:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    health-check-url-path: /actuator/health
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+    hystrix:
+      stream:
+        enabled: true
+
+
+feign:
+  hystrix:
+    enabled: true
+
+

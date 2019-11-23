@@ -1,0 +1,16 @@
+server:
+  port: 9090
+
+logging:
+  level:
+    org.springframework: info
+
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: configserver
+      name: contentservice
+      profile: dev
+      label: nokafka

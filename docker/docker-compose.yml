@@ -1,0 +1,17 @@
+version: "3"
+services:
+
+  userservice:
+    image: mieandu/userservice:1.0
+    ports:
+      - "8080:8080"
+    networks:
+      - webnet
+  contentservice:
+    image: mieandu/contentservice:1.0
+    ports:
+      - "9090:9090"
+    networks:
+      - webnet
+networks:
+  webnet:

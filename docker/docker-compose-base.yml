@@ -1,0 +1,50 @@
+version: "3"
+services:
+  eurekaserver:
+    image: mieandu/eurekaserver:1.0
+    ports:
+      - "8761:8761"
+    networks:
+      - webnet
+  configserver:
+    image: mieandu/configserver:1.0
+    ports:
+      - "8888:8888"
+    depends_on:
+      - eurekaserver
+    networks:
+      - webnet
+  adminserver:
+    image: mieandu/adminserver:1.0
+    ports:
+      - "8844:8844"
+    depends_on:
+      - eurekaserver
+    networks:
+      - webnet
+  zipkinserver:
+    image: mieandu/zipkinserver:1.0
+    ports:
+      - "9411:9411"
+    depends_on:
+      - eurekaserver
+    networks:
+      - webnet
+#  zuulserver:
+#    image: mieandu/zuulserver:1.0
+#    ports:
+#      - "5555:5555"
+#    depends_on:
+#      - eurekaserver
+#    networks:
+#      - webnet
+#  autheserver:
+#    image: mieandu/autheserver:1.0
+#    ports:
+#      - "8768:8768"
+#    depends_on:
+#      - eurekaserver
+#    networks:
+#      - webnet
+networks:
+  webnet:

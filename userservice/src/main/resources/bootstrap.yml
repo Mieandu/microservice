@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: userservice
+  profiles:
+    active: dev
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: configserver
+      name: contentservice
+      profile: dev
+      label: nokafka
+
+logging:
+  level:
+    org.springframework: debug
