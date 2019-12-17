@@ -30,21 +30,21 @@ services:
       - eurekaserver
     networks:
       - webnet
-#  zuulserver:
-#    image: mieandu/zuulserver:1.0
-#    ports:
-#      - "5555:5555"
-#    depends_on:
-#      - eurekaserver
-#    networks:
-#      - webnet
-#  autheserver:
-#    image: mieandu/autheserver:1.0
-#    ports:
-#      - "8768:8768"
-#    depends_on:
-#      - eurekaserver
-#    networks:
-#      - webnet
+  zuulserver:
+    image: mieandu/zuulserver:1.0
+    ports:
+      - "5555:5555"
+    depends_on:
+      - eurekaserver
+    networks:
+      - webnet
+  autheserver:
+    image: mieandu/autheserver:1.0
+    ports:
+      - "8901:8901"
+    depends_on:
+      - eurekaserver
+    networks:
+      - webnet
 networks:
   webnet:

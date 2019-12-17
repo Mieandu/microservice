@@ -22,4 +22,4 @@ security:
   oauth2:
     resource:
       service-id: autheserver
-      user-info-uri: http://autheserver:8768/auth/user  # 验证令牌
+      user-info-uri: http://autheserver:8901/auth/user  # 验证令牌

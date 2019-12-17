@@ -4,6 +4,13 @@ spring:
 server:
   port: 5555
 
+---
+spring:
+  zipkin:
+    baseUrl: http://zipkinserver:9411
+  sleuth:
+    sampler:
+      probability: 1.0
 
 eureka:
   client:
@@ -15,7 +22,7 @@ eureka:
       defaultZone: http://eurekaserver:8761/eureka/
   instance:
     hostname: zuulserver
-    # prefer-ip-address: true
+    #prefer-ip-address: true
     health-check-url-path: /actuator/health
 
 management:

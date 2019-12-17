@@ -1,3 +1,4 @@
+/*
 import org.reflections.Reflections;
 import org.reflections.scanners.MethodAnnotationsScanner;
 import org.reflections.util.ClasspathHelper;
@@ -24,3 +25,4 @@ public class RefectionTest {
         }
     }
 }
+*/

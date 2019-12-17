@@ -6,7 +6,7 @@ spring:
     config:
       server:
         git:
-          uri: https://gitee.com/mieandu/microservice/
+          uri: https://github.com/mieandu/microservice/
           search-paths: config-repo
       discovery:
         enabled: true

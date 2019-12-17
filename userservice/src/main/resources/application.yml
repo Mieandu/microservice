@@ -14,8 +14,9 @@ eureka:
     service-url:
       defaultZone: http://eurekaserver:8761/eureka/
   instance:
-    prefer-ip-address: true
+    #prefer-ip-address: true
     health-check-url-path: /actuator/health
+    hostname: userservice
 
 management:
   endpoints:
